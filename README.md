@@ -1,4 +1,4 @@
-###### Mirai: The Future of Finance
+# Mirai: The Future of Finance #
 
 # About Mirai's Technologies:
 A repository for our senior project that is a web based mobile wallet. Will be developed in Python, Node.js with Typescript, and React.js. We anticipate the use of MongoDB as a backend database for the purpose of our website. Additionally, Stripe's API will be utilzied to manage USD Currencies. 
