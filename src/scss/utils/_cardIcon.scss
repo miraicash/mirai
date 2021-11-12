@@ -1,0 +1,17 @@
+@mixin getCardIconStyle {
+    .icon {
+        cursor: pointer;
+        background-color: #ffff66;
+        svg {
+            color: #be9e3e;
+            font-size: 1.4rem;
+        }
+        border-radius: 0.5rem;
+
+        padding: 0.5rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
