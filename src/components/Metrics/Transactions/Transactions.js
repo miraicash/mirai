@@ -16,7 +16,7 @@ function Transactions(props) {
             <ul style={{ listStyleType: "none" }}>
                 {props.transactions.map((transaction, index) => {
                     return (
-                        <li key={transaction.transactionID}>
+                        <li key={index}>
                             <div className="transaction">
                                 <div className="transaction__info">
                                     <h4>{transaction.name}</h4> {/* example: "Burger King" */}
