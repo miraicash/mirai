@@ -12,7 +12,7 @@ function Sidebar() {
                     <ul>
                         <li className="active">
                             <MdViewHeadline />
-                            <a href="#">Overview</a>
+                            <a href="/dashboard">Overview</a>
                         </li>
                     </ul>
                 </div>
