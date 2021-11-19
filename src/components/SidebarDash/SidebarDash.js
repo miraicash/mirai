@@ -16,7 +16,7 @@ function Sidebar() {
                         </li>
                         <li className="active">
                             <MdViewHeadline />
-                            <a href="#">Cash</a>
+                            <a href="#">CASH</a>
                         </li>
                     </ul>
                 </div>
