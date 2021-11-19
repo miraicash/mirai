@@ -18,6 +18,10 @@ function Sidebar() {
                             <MdViewHeadline />
                             <a href="#">CASH</a>
                         </li>
+                        <li className="active">
+                            <MdViewHeadline />
+                            <a href="#">Crypto</a>
+                        </li>
                     </ul>
                 </div>
             </div>
