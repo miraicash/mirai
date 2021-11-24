@@ -22,10 +22,22 @@ function Sidebar() {
                             <MdViewHeadline />
                             <a href="#">Crypto</a>
                         </li>
-                    </ul>
+                        <li className="active">
+                            <MdViewHeadline />
+                            <a href="#">Transactions</a>
+                        </li>
+                    </ul >
                 </div>
             </div>
             <div className="lower__container">{/* <div className="container">Hello</div> */}</div>
+            <div className="settings">
+                    <ul>
+                        <li className="active">
+                            <MdViewHeadline />
+                            <a href="#">Settings</a>
+                        </li>
+                    </ul >
+                </div>
         </div>
     );
 }
