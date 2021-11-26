@@ -1,9 +1,9 @@
 @mixin getCardIconStyle {
     .icon {
         cursor: pointer;
-        background-color: #ffff66;
+        background-color: #000;
         svg {
-            color: #be9e3e;
+            color: #ebec87;
             font-size: 1.4rem;
         }
         border-radius: 0.5rem;

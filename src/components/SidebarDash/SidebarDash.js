@@ -16,11 +16,19 @@ function Sidebar() {
                         </li>
                         <li className="active">
                             <MdViewHeadline />
-                            <a href="#">CASH</a>
+                            <a href="#">Cash</a>
                         </li>
                         <li className="active">
                             <MdViewHeadline />
                             <a href="#">Crypto</a>
+                        </li>
+                        <li className="active">
+                            <MdViewHeadline />
+                            <a href="#">Account</a>
+                        </li>
+                        <li className="active">
+                            <MdViewHeadline />
+                            <a href="#">Log Out</a>
                         </li>
                     </ul>
                 </div>
