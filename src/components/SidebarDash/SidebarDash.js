@@ -34,6 +34,14 @@ function Sidebar() {
                 </div>
             </div>
             <div className="lower__container">{/* <div className="container">Hello</div> */}</div>
+            <div className="settings">
+                    <ul>
+                        <li className="active">
+                            <MdViewHeadline />
+                            <a href="#">Settings</a>
+                        </li>
+                    </ul >
+                </div>
         </div>
     );
 }
