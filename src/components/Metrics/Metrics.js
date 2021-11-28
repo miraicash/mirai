@@ -3,59 +3,52 @@ import Navbar from "./Navbar";
 import DailyMetric from "./DailyMetric/DailyMetric";
 import Transactions from "./Transactions/Transactions";
 
-let cashTransactions = [
+let noTransactions = [
     {
-        name: "Burger King",
-        date: "10/12/2021",
-        type: "Outgoing",
-        amount: "$15",
-    },
-    {
-        name: "Kohls",
-        date: "10/11/2021",
-        type: "Outgoing",
-        amount: "$59.18",
-    },
-    {
-        name: "NYIT",
-        date: "10/10/2021",
-        type: "Incoming",
-        amount: "$908.31",
+        id: 0,
+        name: "No Transactions",
+        date: "",
+        type: "",
+        amount: "",
     },
 ];
 
-let cryptoTransactions = [
-    {
-        name: "OpenSea",
-        date: "11/12/2021",
-        type: "Outgoing",
-        amount: "0.55 BTC",
-    },
-    {
-        name: "MiningLLC",
-        date: "11/12/2021",
-        type: "Incoming",
-        amount: "2.3 BTC",
-    },
-    {
-        name: "GameStop",
-        date: "11/11/2021",
-        type: "Outgoing",
-        amount: "0.039 BTC",
-    },
-];
-
-function Metrics(props) {
+function Metrics({ stateChanger, ...props }) {
+    let user = props.data.user;
     return (
         <div className="metrics">
             <Navbar />
             <div className="grid-one">
-                <DailyMetric title={"Cash Balance (USD)"} subtitle={"$100"} />
-                <DailyMetric title={"Crypto Balance (BTC)"} subtitle={"0.45 BTC"} />
+                <DailyMetric
+                    title={"Cash Balance (USD)"}
+                    subtitle={`$${user.wallet.balance.cash.toString() || NaN}`}
+                    transactions={user.transactions.cash}
+                    currency={"cash"}
+                    wallet={user.wallet}
+                    username={user.username}
+                    stateChanger={stateChanger}
+                />
+                <DailyMetric
+                    title={"Crypto Balance (BTC)"}
+                    subtitle={`${user.wallet.balance.crypto.toString() || NaN} BTC`}
+                    transactions={user.transactions.crypto}
+                    currency={"crypto"}
+                    wallet={user.wallet}
+                    username={user.username}
+                    stateChanger={stateChanger}
+                />
             </div>
             <div className="grid-two">
-                <Transactions moneyType={"Cash"} transactions={cashTransactions} />
-                <Transactions moneyType={"Crypto"} transactions={cryptoTransactions} />
+                <Transactions
+                    moneyType={"Cash"}
+                    transactions={user.transactions.cash.length > 0 ? user.transactions.cash : noTransactions}
+                    stateChanger={stateChanger}
+                />
+                <Transactions
+                    moneyType={"Crypto"}
+                    transactions={user.transactions.crypto.length > 0 ? user.transactions.crypto : noTransactions}
+                    stateChanger={stateChanger}
+                />
             </div>
         </div>
     );
