@@ -13,7 +13,7 @@ const Sidebar = () => {
         <h2> Sign Up Or Login</h2>
         <h3> Make A Difference, Starting Today!</h3>
         <h4>
-          Have a Google Account? <span>Sign In Here </span>
+         Already Have An Account? <span>Sign In Here </span>
         </h4>
         <Input placeholder="Name" />
         <Input type="email" placeholder="Email Address" />
