@@ -5,7 +5,7 @@ const Main = () => {
   return (
     <Container>
       <h1>
-        Your Education Can Make a Difference!
+        Sign Up Today To Begin Any Transaction!
       </h1>
     </Container>
   );
@@ -13,13 +13,13 @@ const Main = () => {
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
 
   h1 {
-    font-size: 65px;
+    font-size: 60px;
     font-weight: 70000;
     color: #fff;
 
