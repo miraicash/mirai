@@ -10,8 +10,11 @@ const Sidebar = () => {
         <img src={logo} alt="" />
       </LogoWrapper>
       <Form>
-        <h2> Sign Up Today</h2>
+        <h2> Sign Up Or Login</h2>
         <h3> Make A Difference, Starting Today!</h3>
+        <h4>
+          Have a Google Account? <span>Sign In Here </span>
+        </h4>
         <Input placeholder="Name" />
         <Input type="email" placeholder="Email Address" />
         <Input type="password" placeholder="Password" />
