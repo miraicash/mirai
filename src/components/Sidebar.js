@@ -10,8 +10,8 @@ const Sidebar = () => {
         <img src={logo} alt="" />
       </LogoWrapper>
       <Form>
-        <h2> Sign Up Or Login</h2>
-        <h3> Make A Difference, Starting Today!</h3>
+        <h2> Sign Up Below</h2>
+        <h3> For your Mirai Experience!</h3>
         <h4>
          Already Have An Account? <span>Sign In Here </span>
         </h4>
@@ -23,7 +23,7 @@ const Sidebar = () => {
       </Form>
       <div>
         <Terms>
-          ©2021 All Rights Reserved. 
+          © 2021 Mirai. All Rights Reserved. 
         </Terms>
       </div>
     </Container>
@@ -45,7 +45,7 @@ const Form = styled.form`
   align-items: center;
   h3 {
     color: #000;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
   }
 
   button {
@@ -57,9 +57,10 @@ const Form = styled.form`
     margin: 1rem 0;
     box-shadow: 0px 14px 19px -5px rgba(0, 0, 0, 0.25);
     border-radius: 18px;
-    background-color: #f0785d;
-    color: #fff;
+    background: linear-gradient(to right, #ffff66 1%, #333300 100%);
+    color: #000;
     font-weight: 1000;
+    font-size: 15px;
     cursor: pointer;
     transition: all 0.2s ease-in;
 
@@ -90,7 +91,7 @@ const LogoWrapper = styled.div`
 const Container = styled.div`
   min-width: 450px;
   backdrop-filter: blur(35px);
-  background-color: rgba(253, 187, 176, 1);
+  background-color: rgba(189, 187, 73, 0.8);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -105,13 +106,13 @@ const Container = styled.div`
   }
 
   h4 {
-    color: #808080;
+    color: #000;
     font-weight: bold;
-    font-size: 17px;
+    font-size: 18px;
     margin-top: 2rem;
 
     span {
-      color: #ff8d8d;
+      color: #fff;
       cursor: pointer;
     }
   }

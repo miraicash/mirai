@@ -21,14 +21,14 @@ const StyledInput = styled.input`
   height: 50px;
   border: none;
   margin: 0.5rem 0;
-  background-color: #e6d5d5;
-  box-shadow: 0px 17px 9px -15px rgba(245, 40, 145, 0.8);
-  border-radius: 18px;
+  background-color: #e8ede9;
+  box-shadow: 0px 17px 9px -15px rgba(0, 0, 0, 0);
+  border-radius: 180px;
   padding: 0 1rem;
   transition: all 0.20s ease-in;
 
   &:hover {
-    transform: translateY(-7px);
+    transform: translateY(-5px);
   }
 `;
 
