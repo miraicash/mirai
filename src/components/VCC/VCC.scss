@@ -18,7 +18,14 @@
     display: inline-block;
     width: 16rem;
     height: 10rem;
-    background-image: url("https://image.ibb.co/bVnMrc/g3095.png"), linear-gradient(to right bottom, #fd696b, #fa616e, #f65871, #f15075, #ec4879); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
+    background-image: linear-gradient(
+        to right bottom,
+        #fd696b,
+        #fa616e,
+        #f65871,
+        #f15075,
+        #ec4879
+    ); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
