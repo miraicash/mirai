@@ -1,18 +1,23 @@
 import React from "react";
 import { MdViewHeadline } from "react-icons/md";
+import VCC from "../VCC/VCC";
 
-function Sidebar() {
+function Sidebar(props) {
+    console.log(props.data);
     return (
         <div className="sidebar">
             <div className="upper__container">
-                <div className="brand">
+                <div className="brand" style={{ display: "flex", justifyContent: "center" }}>
                     <img src="https://i.imgur.com/evZmQKC.png" alt="" />
                 </div>
                 <div className="links">
                     <ul>
-                        <li className="active">
+                        {/* <li className="active">
                             <MdViewHeadline />
                             <a href="/dashboard">Overview</a>
+                        </li> */}
+                        <li>
+                            <VCC card={props.data.wallet.card} username={props.data.username} />
                         </li>
                     </ul>
                 </div>

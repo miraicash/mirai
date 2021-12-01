@@ -6,6 +6,8 @@ import "../scss/Styles.scss";
 function DashboardPage() {
     let [userData, setUserData] = useState({});
     let [dataRecieved, setDataRecieved] = useState(0);
+    const [globalState, setGlobalState] = useState(0);
+
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/users/info`, {
             method: "GET",
@@ -27,13 +29,13 @@ function DashboardPage() {
                 console.error("Failed to get user data");
                 setDataRecieved(2);
             });
-    }, []);
+    }, [globalState]);
     return (
         <>
             {dataRecieved === 1 ? (
                 <div className="dashboard">
-                    <SidebarDash />
-                    <Metrics />
+                    <SidebarDash data={userData.user} />
+                    <Metrics data={userData} stateChanger={setGlobalState} />
                 </div>
             ) : (
                 <div>{dataRecieved === 0 ? "Loading..." : "Unauthorized access"}</div>
