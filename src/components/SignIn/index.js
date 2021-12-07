@@ -1,7 +1,10 @@
 import React from "react";
 import { Container, FormWrap, Icon, FormContent, Form, FormH1, FormLabel, FormInput, FormButton, Text } from "./SigninElements";
+import { useAlert } from "react-alert";
 
 const SignIn = () => {
+    const alert = useAlert();
+
     const username = React.useRef(null);
     const password = React.useRef(null);
 
@@ -23,6 +26,7 @@ const SignIn = () => {
             console.log("Login success:", json);
             window.location.href = "/dashboard";
         } else {
+            alert.error(json.message);
             console.error(json.message || "Login failed");
         }
     };
@@ -36,11 +40,12 @@ const SignIn = () => {
                         <Form onSubmit={handleSubmit}>
                             <FormH1>Please Sign In Below</FormH1>
                             <FormLabel htmlFor="for">Email:</FormLabel>
-                            <FormInput type="email" required ref={username} />
+                            <FormInput type="email" required ref={username} placeholder="wenjia.li@mirai.cash" />
                             <FormLabel htmlFor="for">Password:</FormLabel>
-                            <FormInput type="password" required ref={password} />
+                            <FormInput type="password" required ref={password} placeholder="*******" />
                             <FormButton type="submit">Continue</FormButton>
                             <Text>Forgot password?</Text>
+                            <Text onClick={() => (window.location.href = "/signup")}>New User? Click Here!</Text>
                         </Form>
                     </FormContent>
                 </FormWrap>
