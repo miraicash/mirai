@@ -38,4 +38,16 @@
             }
         }
     }
+    .lower__container {
+        .logout-button-container {
+            margin-bottom: 2rem;
+            display: flex;
+            align-content: center;
+            gap: 1rem;
+            cursor: pointer;
+            .logout-button-icon {
+                margin-top: 0.1rem;
+            }
+        }
+    }
 }
