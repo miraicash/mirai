@@ -25,11 +25,10 @@ function DailyMetric({ stateChanger, ...props }) {
     const [currency1, setCurrency1] = useState('BTC');
     const [currency2, setCurrency2] = useState('EUR');
     const [rates, setRates] = useState([])
-    const exchangeRateAPI = `http://api.coinlayer.com/api/live?access_key=ad88b1f2e40705e552afc16a1b838d48`
-    // const exchangeRateAPI = `http://api.coinlayer.com/api/live?access_key=${process.env.REACT_APP_CONVERSION_API_KEY}`
+    const exchangeRatesapi = `http://api.exchangeratesapi.io/v1/latest?access_key=6c96fb0c3d6fdca88c7478847c9b1796`
 
     useEffect(() => {
-        fetch(exchangeRateAPI)
+        fetch(exchangeRatesapi)
         .then(res => res.json())
         .then(response => {
             console.log(response)
