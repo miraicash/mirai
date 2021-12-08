@@ -22,15 +22,19 @@ function DailyMetric({ stateChanger, ...props }) {
     const [showConverter, setShowConverter] = useState(false);
     const [amount1, setAmount1] = useState(1);
     const [amount2, setAmount2] = useState(1);
-    const [currency1, setCurrency1] = useState('USD');
+    const [currency1, setCurrency1] = useState('BTC');
     const [currency2, setCurrency2] = useState('EUR');
     const [rates, setRates] = useState([])
-    const exchangeRateAPI = 'http://data.fixer.io/api/latest?access_key=3b814c7e0e2d69455c8acba5211f2b82';
+    const exchangeRateAPI = `http://api.coinlayer.com/api/live?access_key=ad88b1f2e40705e552afc16a1b838d48`
+    // const exchangeRateAPI = `http://api.coinlayer.com/api/live?access_key=${process.env.REACT_APP_CONVERSION_API_KEY}`
 
     useEffect(() => {
         fetch(exchangeRateAPI)
         .then(res => res.json())
-        .then(data => setRates(data.rates))
+        .then(response => {
+            console.log(response)
+            setRates(response.rates)
+        })
     }, []);
 
     useEffect(() => {
