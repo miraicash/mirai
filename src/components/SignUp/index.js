@@ -36,7 +36,7 @@ const SignUp = () => {
         let json = await login.json();
         if (login.status === 200) {
             console.log("Signup success:", json);
-            window.location.href = "/dashboard";
+            window.location.href = "/wallet";
         } else {
             alert.error(json.message);
             console.error(json.message || "Signup failed");
@@ -52,35 +52,67 @@ const SignUp = () => {
                         <Form onSubmit={handleSubmit}>
                             <FormH1>Please Sign Up Below</FormH1>
                             <FormLabel htmlFor="for">Email:</FormLabel>
-                            <FormInput type="email" required ref={username} placeholder="wenjia.li@mirai.cash" />
+                            <FormInput type="email" required ref={username} placeholder="wenjia.li@mirai.cash" minLength="3" maxLength="50" />
                             <FormLabel htmlFor="for">Password:</FormLabel>
-                            <FormInput type="password" required ref={password} placeholder="*******" />
+                            <FormInput type="password" required ref={password} placeholder="*******" minLength="9" maxLength="50" />
                             <div style={{ display: "flex", justifyContent: "space-between" }}>
                                 <div style={{ display: "flex", flexDirection: "column" }}>
                                     <FormLabel htmlFor="for">First Name:</FormLabel>
-                                    <FormInput type="text" required ref={firstName} placeholder="Wenjia" style={{ width: "9rem" }} />
+                                    <FormInput
+                                        type="text"
+                                        required
+                                        ref={firstName}
+                                        placeholder="Wenjia"
+                                        style={{ width: "9rem" }}
+                                        minLength="3"
+                                        maxLength="50"
+                                    />
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column" }}>
                                     <FormLabel htmlFor="for">Last Name:</FormLabel>
-                                    <FormInput type="text" required ref={lastName} placeholder="Li" style={{ width: "9rem" }} />
+                                    <FormInput type="text" required ref={lastName} placeholder="Li" style={{ width: "9rem" }} minLength="3" maxLength="50" />
                                 </div>
                             </div>
                             <hr style={{ marginTop: "1rem", marginBottom: "1rem" }} />
                             <FormH1 style={{ fontSize: "17px" }}>Add funds using your debit card:</FormH1>
                             <FormLabel htmlFor="for">Debit Card Number:</FormLabel>
-                            <FormInput type="number" required ref={debitCardNumber} placeholder="1234567890123456" />
+                            <FormInput type="number" required ref={debitCardNumber} placeholder="1234567890123456" minLength="15" maxLength="16" />
                             <div style={{ display: "flex", justifyContent: "space-between" }}>
                                 <div style={{ display: "flex", flexDirection: "column" }}>
                                     <FormLabel htmlFor="for">MM/YY:</FormLabel>
-                                    <FormInput type="text" required ref={debitCardExpiry} placeholder="06/25" style={{ width: "6rem" }} />
+                                    <FormInput
+                                        type="text"
+                                        required
+                                        ref={debitCardExpiry}
+                                        placeholder="06/25"
+                                        style={{ width: "6rem" }}
+                                        minLength="5"
+                                        maxLength="5"
+                                    />
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column" }}>
                                     <FormLabel htmlFor="for">CVV:</FormLabel>
-                                    <FormInput type="number" required ref={debitCardCVV} placeholder="987" style={{ width: "5rem" }} />
+                                    <FormInput
+                                        type="number"
+                                        required
+                                        ref={debitCardCVV}
+                                        placeholder="987"
+                                        style={{ width: "5rem" }}
+                                        minLength="3"
+                                        maxLength="4"
+                                    />
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column" }}>
                                     <FormLabel htmlFor="for">ZIP:</FormLabel>
-                                    <FormInput type="number" required ref={debitCardZip} placeholder="10011" style={{ width: "6rem" }} />
+                                    <FormInput
+                                        type="number"
+                                        required
+                                        ref={debitCardZip}
+                                        placeholder="10011"
+                                        style={{ width: "6rem" }}
+                                        minLength="5"
+                                        maxLength="5"
+                                    />
                                 </div>
                             </div>
                             <FormButton type="submit" style={{ marginTop: "1rem" }}>

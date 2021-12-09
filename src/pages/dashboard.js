@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Metrics from "../components/Metrics/Metrics";
+import UserSettings from "../components/UserSettings/UserSettings";
 import SidebarDash from "../components/SidebarDash/SidebarDash";
 import "../scss/Styles.scss";
 
 function DashboardPage() {
     let [userData, setUserData] = useState({});
     let [dataRecieved, setDataRecieved] = useState(0);
-    const [globalState, setGlobalState] = useState(0);
+    let [globalState, setGlobalState] = useState(0);
+    let [currentPage, setCurrentPage] = useState("dashboard");
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/users/info`, {
@@ -34,8 +36,9 @@ function DashboardPage() {
         <>
             {dataRecieved === 1 ? (
                 <div className="dashboard">
-                    <SidebarDash data={userData.user} />
-                    <Metrics data={userData} stateChanger={setGlobalState} />
+                    <SidebarDash data={userData.user} page={currentPage} pageChanger={setCurrentPage} />
+                    {currentPage === "dashboard" && <Metrics data={userData} stateChanger={setGlobalState} />}
+                    {currentPage === "settings" && <UserSettings data={userData} stateChanger={setGlobalState} />}
                 </div>
             ) : (
                 <div>{dataRecieved === 0 ? "Loading..." : "Unauthorized access"}</div>

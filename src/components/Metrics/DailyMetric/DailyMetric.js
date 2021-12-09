@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import { BiPaperPlane } from "react-icons/bi";
 import ReactTooltip from "react-tooltip";
 import VCC from "../../VCC/VCC";
+import { useAlert } from "react-alert";
 
 const noTransactions = [
     {
@@ -14,6 +15,8 @@ const noTransactions = [
 ];
 
 function DailyMetric({ stateChanger, ...props }) {
+    const alert = useAlert();
+
     const [showDeposit, setShowDeposit] = useState(false);
     const [showWithdraw, setShowWithdraw] = useState(false);
     const [showSendRecieve, setShowSendRecieve] = useState(false);
@@ -21,9 +24,10 @@ function DailyMetric({ stateChanger, ...props }) {
 
     const handleShowDeposit = () => setShowDeposit(true);
     const handleCloseDeposit = () => setShowDeposit(false);
-    const handleCloseAndDeposit = () => {
+    const handleCloseAndDeposit = async () => {
         console.log("deposit:", parseFloat(amount));
-        fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/payments/deposit`, {
+        setShowDeposit(false);
+        let handler = await fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/payments/deposit`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -33,14 +37,21 @@ function DailyMetric({ stateChanger, ...props }) {
                 currency: props.currency,
                 amount: parseFloat(amount),
             }),
-        }).then(() => stateChanger(performance.now()));
-        setShowDeposit(false);
+        });
+        let json = await handler.json();
+        if (handler.status === 200) {
+            stateChanger(performance.now());
+        } else {
+            alert.error(json.message);
+            console.error(json.message || "Deposit Failed");
+        }
     };
     const handleShowWithdraw = () => setShowWithdraw(true);
     const handleCloseWithdraw = () => setShowWithdraw(false);
-    const handleCloseAndWithdraw = () => {
+    const handleCloseAndWithdraw = async () => {
         console.log("withdraw:", parseFloat(amount));
-        fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/payments/withdraw`, {
+        setShowWithdraw(false);
+        let handler = await fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/payments/withdraw`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -50,8 +61,14 @@ function DailyMetric({ stateChanger, ...props }) {
                 currency: props.currency,
                 amount: parseFloat(amount),
             }),
-        }).then(() => stateChanger(performance.now()));
-        setShowWithdraw(false);
+        });
+        let json = await handler.json();
+        if (handler.status === 200) {
+            stateChanger(performance.now());
+        } else {
+            alert.error(json.message);
+            console.error(json.message || "Withdraw Failed");
+        }
     };
     const handleShowSendRecieve = () => setShowSendRecieve(true);
     const handleCloseSendRecieve = () => setShowSendRecieve(false);

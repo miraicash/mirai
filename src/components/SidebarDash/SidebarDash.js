@@ -2,8 +2,9 @@ import React from "react";
 import { AiOutlineStock, AiOutlineDashboard, AiOutlineSetting, AiOutlineLogout } from "react-icons/ai";
 import VCC from "../VCC/VCC";
 
-function Sidebar(props) {
+function Sidebar({ pageChanger, ...props }) {
     console.log(props.data);
+
     const handleLogout = async (e) => {
         e.preventDefault();
         let login = await fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/users/logout`, {
@@ -21,6 +22,7 @@ function Sidebar(props) {
             console.error(json.message || "Logout failed");
         }
     };
+
     return (
         <div className="sidebar">
             <div className="upper__container">
@@ -31,15 +33,21 @@ function Sidebar(props) {
                     <ul className="links-list">
                         <li className="dashboard-sidebar">
                             <AiOutlineDashboard />
-                            <a href="/dashboard">Dashboard</a>
+                            <span onClick={() => pageChanger("dashboard")} style={{ cursor: "pointer" }}>
+                                Dashboard
+                            </span>
                         </li>
                         <li className="stocks-sidebar">
                             <AiOutlineStock />
-                            <a href="/stocks">Stocks</a>
+                            <span onClick={() => pageChanger("stocks")} style={{ cursor: "pointer" }}>
+                                Stocks
+                            </span>
                         </li>
                         <li className="stocks-settings">
                             <AiOutlineSetting />
-                            <a href="/settings">Settings</a>
+                            <span onClick={() => pageChanger("settings")} style={{ cursor: "pointer" }}>
+                                Settings
+                            </span>
                         </li>
                     </ul>
                     <hr style={{ marginBottom: "1.5rem" }} />
