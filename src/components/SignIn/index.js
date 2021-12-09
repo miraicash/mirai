@@ -24,7 +24,7 @@ const SignIn = () => {
         let json = await login.json();
         if (login.status === 200) {
             console.log("Login success:", json);
-            window.location.href = "/dashboard";
+            window.location.href = "/wallet";
         } else {
             alert.error(json.message);
             console.error(json.message || "Login failed");

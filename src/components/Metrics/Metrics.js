@@ -17,7 +17,7 @@ function Metrics({ stateChanger, ...props }) {
     let user = props.data.user;
     return (
         <div className="metrics">
-            <Navbar />
+            <Navbar title={"Overview"} username={user.firstName} />
             <div className="grid-one">
                 <DailyMetric
                     title={"Cash Balance (USD)"}

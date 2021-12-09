@@ -1,0 +1,139 @@
+.settings {
+    background-color: rgb(255, 254, 224);
+    padding: 0 2rem;
+    @include getNavbarStyles;
+    span {
+        font-weight: 700;
+        color: rgb(109, 109, 109);
+    }
+
+    @media screen and (max-width: 400px) {
+        padding: 0 1rem;
+    }
+
+    .grid-one {
+        display: flex;
+        justify-content: center;
+        .top__card {
+            @include getCardStyles;
+        }
+        .top__card__info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            @include getCardIconStyle;
+        }
+        @include getMonthlyFollowersStyles;
+        .form {
+            background: #010101;
+            height: auto;
+            width: 40vw;
+            z-index: 1;
+            display: grid;
+            margin: 0 auto;
+            padding: 30px 45px;
+            border-radius: 14px;
+            box-shadow: 0 1px 40px rgba(1, 1, 1, 1);
+
+            @media screen and (max-width: 400px) {
+                width: 95vw;
+                padding: 30px 15px;
+            }
+            .row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 1rem;
+            }
+            .formH1 {
+                margin-bottom: 20px;
+                color: #fff;
+                font-size: 20px;
+                font-weight: 400;
+                text-align: start;
+                font-weight: 600;
+            }
+            .formLabel {
+                font-size: 14px;
+                color: #fff;
+            }
+            .formInput {
+                padding: 16px 16px;
+                border: none;
+                border-radius: 114px;
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+                &:disabled {
+                    color: #b6b6b6;
+                    background-color: #f7f7f7;
+                    cursor: not-allowed;
+                }
+                width: 18rem;
+                @media screen and (max-width: 400px) {
+                    width: 12rem;
+                }
+            }
+            .formButton {
+                background: #01bf71;
+                padding: 16px 0;
+                border: none;
+                border-radius: 2rem;
+                color: #000;
+                font-size: 20px;
+                cursor: pointer;
+                margin-top: 2rem;
+                display: flex;
+                justify-content: center;
+            }
+            .formText {
+                text-align: center;
+                margin-top: 20px;
+                color: #f54848;
+                font-size: 16x;
+                cursor: pointer;
+            }
+            .row-card-details {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 1.5rem;
+                .card-details {
+                    display: flex;
+                    flex-direction: column;
+                    .card-expiry {
+                        margin-top: 0.6rem;
+                        width: 10rem;
+                        @media screen and (max-width: 400px) {
+                            width: 6.5rem;
+                        }
+                    }
+                    .card-cvv {
+                        margin-top: 0.6rem;
+                        width: 8rem;
+                        @media screen and (max-width: 400px) {
+                            width: 5rem;
+                        }
+                    }
+                    .card-zip {
+                        margin-top: 0.6rem;
+                        width: 10rem;
+                        @media screen and (max-width: 400px) {
+                            width: 6.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // .grid-two {
+    //     display: grid;
+    //     grid-template-columns: 1fr 1fr;
+    //     gap: 1rem;
+    //     height: 40%;
+
+    //     @include getTrendingTracksStyles;
+    //     @include getTrendingUsersStyles;
+    //     @include getUserActivityStyles;
+    // }
+}
