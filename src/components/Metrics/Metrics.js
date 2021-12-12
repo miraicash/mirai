@@ -21,16 +21,17 @@ function Metrics({ stateChanger, ...props }) {
             <div className="grid-one">
                 <DailyMetric
                     title={"Cash Balance (USD)"}
-                    subtitle={`$${user.wallet.balance.cash.toString() || NaN}`}
+                    subtitle={`$${parseFloat(user.wallet.balance.cash).toFixed(2).toString() || NaN}`}
                     transactions={user.transactions.cash}
                     currency={"cash"}
                     wallet={user.wallet}
                     username={user.username}
+                    name={user.firstName + " " + user.lastName}
                     stateChanger={stateChanger}
                 />
                 <DailyMetric
                     title={"Crypto Balance (BTC)"}
-                    subtitle={`${user.wallet.balance.crypto.toString() || NaN} BTC`}
+                    subtitle={`${+parseFloat(user.wallet.balance.crypto).toFixed(5).toString() || NaN} BTC`}
                     transactions={user.transactions.crypto}
                     currency={"crypto"}
                     wallet={user.wallet}

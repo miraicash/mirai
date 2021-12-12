@@ -1,9 +1,10 @@
 import React from "react";
 import { AiOutlineStock, AiOutlineDashboard, AiOutlineSetting, AiOutlineLogout } from "react-icons/ai";
 import VCC from "../VCC/VCC";
+import { useAlert } from "react-alert";
 
 function Sidebar({ pageChanger, ...props }) {
-    console.log(props.data);
+    const alert = useAlert();
 
     const handleLogout = async (e) => {
         e.preventDefault();
@@ -39,7 +40,8 @@ function Sidebar({ pageChanger, ...props }) {
                         </li>
                         <li className="stocks-sidebar">
                             <AiOutlineStock />
-                            <span onClick={() => pageChanger("stocks")} style={{ cursor: "pointer" }}>
+                            {/* <span onClick={() => pageChanger("stocks")} style={{ cursor: "pointer" }}> */}
+                            <span onClick={() => alert.error("Stocks coming soon")} style={{ cursor: "pointer" }}>
                                 Stocks
                             </span>
                         </li>
