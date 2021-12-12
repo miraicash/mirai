@@ -44,7 +44,7 @@ const SignIn = () => {
                             <FormLabel htmlFor="for">Password:</FormLabel>
                             <FormInput type="password" required ref={password} placeholder="*******" />
                             <FormButton type="submit">Continue</FormButton>
-                            <Text>Forgot password?</Text>
+                            <Text onClick={() => alert.error("Coming soon")}>Forgot password?</Text>
                             <Text onClick={() => (window.location.href = "/signup")}>New User? Click Here!</Text>
                         </Form>
                     </FormContent>

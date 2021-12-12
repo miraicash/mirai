@@ -1,18 +1,18 @@
 import React from "react";
-import { BsArrowRight } from "react-icons/bs";
+// import { BsArrowRight } from "react-icons/bs";
 
 function Transactions({ stateChanger, ...props }) {
     var transactions = [].concat(props.transactions).reverse();
     return (
         <div className="transactions__title">
             <div className="transactions__info">
-                <div>
+                <div style={{ marginBottom: "1rem" }}>
                     <h3>{props.moneyType} Transactions</h3>
                     {/* <span>Descending Order</span> */}
                 </div>
-                <div className="icon" style={{ backgroundColor: "#eee657" }}>
+                {/* <div className="icon" style={{ backgroundColor: "#eee657" }}>
                     <BsArrowRight />
-                </div>
+                </div> */}
             </div>
             <ul style={{ listStyleType: "none", maxHeight: "17rem", overflow: "auto", paddingRight: "0.5rem" }}>
                 {transactions.map((transaction, index) => {
@@ -25,7 +25,7 @@ function Transactions({ stateChanger, ...props }) {
                                 </div>
                                 <div className="transaction__meta">
                                     <span style={{ fontSize: "0.7rem" }}>{transaction.type}</span> {/* either 'Outgoing' or 'Incoming" */}
-                                    <span style={{ fontSize: "0.7rem" }}>{transaction.amount}</span>
+                                    <span style={{ fontSize: "0.7rem" }}>{+parseFloat(transaction.amount).toFixed(props.moneyType === "Cash" ? 2 : 5)}</span>
                                 </div>
                             </div>
                         </li>
