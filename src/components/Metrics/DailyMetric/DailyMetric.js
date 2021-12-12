@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from "recharts";
-import { BsPlus, BsDash } from "react-icons/bs";
+import { BsPlus, BsDash, BsNewspaper } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { BiPaperPlane } from "react-icons/bi";
 import ReactTooltip from "react-tooltip";
 import VCC from "../../VCC/VCC";
 import { useAlert } from "react-alert";
+import CurrencyInput from "./CurrencyInput";
 
 const noTransactions = [
     {
@@ -21,6 +22,52 @@ function DailyMetric({ stateChanger, ...props }) {
     const [showWithdraw, setShowWithdraw] = useState(false);
     const [showSendRecieve, setShowSendRecieve] = useState(false);
     const [amount, setAmount] = useState(0.0);
+    const [showConverter, setShowConverter] = useState(false);
+    const [amount1, setAmount1] = useState(1);
+    const [amount2, setAmount2] = useState(1);
+    const [currency1, setCurrency1] = useState("BTC");
+    const [currency2, setCurrency2] = useState("EUR");
+    const [rates, setRates] = useState([]);
+    const exchangeRatesapi = `http://api.exchangeratesapi.io/v1/latest?access_key=6c96fb0c3d6fdca88c7478847c9b1796`;
+
+    useEffect(() => {
+        fetch(exchangeRatesapi)
+            .then((res) => res.json())
+            .then((response) => {
+                console.log(response);
+                setRates(response.rates);
+            });
+    }, []);
+
+    useEffect(() => {
+        if (!!rates) {
+            handleAmount1Change(amount1);
+        }
+    }, [rates]);
+
+    function format(number) {
+        return number.toFixed(4);
+    }
+
+    function handleAmount1Change(amount1) {
+        setAmount2(format((amount1 * rates[currency2]) / rates[currency1]));
+        setAmount1(amount1);
+    }
+
+    function handleCurrency1Change(currency1) {
+        setAmount2(format((amount1 * rates[currency2]) / rates[currency1]));
+        setCurrency1(currency1);
+    }
+
+    function handleAmount2Change(amount2) {
+        setAmount1(format((amount2 * rates[currency1]) / rates[currency2]));
+        setAmount2(amount2);
+    }
+
+    function handleCurrency2Change(currency2) {
+        setAmount1(format((amount2 * rates[currency1]) / rates[currency2]));
+        setCurrency2(currency2);
+    }
 
     const handleShowDeposit = () => setShowDeposit(true);
     const handleCloseDeposit = () => setShowDeposit(false);
@@ -72,6 +119,8 @@ function DailyMetric({ stateChanger, ...props }) {
     };
     const handleShowSendRecieve = () => setShowSendRecieve(true);
     const handleCloseSendRecieve = () => setShowSendRecieve(false);
+    const handleShowConverter = () => setShowConverter(true);
+    const handleCloseConverter = () => setShowConverter(false);
 
     return (
         <>
@@ -92,6 +141,9 @@ function DailyMetric({ stateChanger, ...props }) {
                         </div>
                         <div className="icon" style={{ backgroundColor: "#63cad8" }} onClick={handleShowSendRecieve}>
                             <BiPaperPlane data-tip="Send/Recieve" data-for={"sendTip" + props.currency} />
+                        </div>
+                        <div className="icon" style={{ backgroundColor: "#2cc990", marginRight: "0.5rem" }} onClick={handleShowConverter}>
+                            <BsNewspaper data-tip="Currency Exchange" data-for={"sendTip" + props.currency} />
                         </div>
                     </div>
                 </div>
@@ -171,6 +223,32 @@ function DailyMetric({ stateChanger, ...props }) {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="primary" onClick={handleCloseSendRecieve}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+                <Modal show={showConverter} onHide={handleCloseConverter}>
+                    <Modal.Header>
+                        <Modal.Title>Currency Converter</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <CurrencyInput
+                            onAmountChange={handleAmount1Change}
+                            onCurrencyChange={handleCurrency1Change}
+                            currencies={Object.keys(rates)}
+                            amount={amount1}
+                            currency={currency1}
+                        />
+                        <CurrencyInput
+                            onAmountChange={handleAmount2Change}
+                            onCurrencyChange={handleCurrency2Change}
+                            currencies={Object.keys(rates)}
+                            amount={amount2}
+                            currency={currency2}
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={handleCloseConverter}>
                             Close
                         </Button>
                     </Modal.Footer>
