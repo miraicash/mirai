@@ -20,7 +20,7 @@ export const FormWrap = styled.div`
     justify-content: center;
 
     @media screen and (max-width: 400px) {
-        height: 80%;
+        height: 100%;
     }
 `;
 
@@ -67,7 +67,7 @@ export const Form = styled.form`
 `;
 
 export const FormH1 = styled.h1`
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     color: #fff;
     font-size: 20px;
     font-weight: 400;
@@ -75,15 +75,18 @@ export const FormH1 = styled.h1`
 `;
 
 export const FormLabel = styled.label`
-    margin-bottom: 18px;
+    margin-bottom: 5px;
     font-size: 14px;
     color: #fff;
 `;
 export const FormInput = styled.input`
     padding: 16px 16px;
-    margin-bottom: 32px;
+    margin-bottom: 15px;
     border: none;
     border-radius: 114px;
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
 `;
 
 export const FormButton = styled.button`

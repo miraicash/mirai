@@ -13,10 +13,17 @@
             }
         }
         .links {
+            .links-list {
+                display: flex;
+                flex-direction: column;
+                padding-left: 3.5rem;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
             li {
                 padding-right: 0;
                 list-style-type: none;
-                margin: 1.5rem 0;
+                margin: 0.5rem 0;
                 display: flex;
                 align-items: center;
                 gap: 1rem;
@@ -28,6 +35,18 @@
                     text-decoration: none;
                     color: black;
                 }
+            }
+        }
+    }
+    .lower__container {
+        .logout-button-container {
+            margin-bottom: 2rem;
+            display: flex;
+            align-content: center;
+            gap: 1rem;
+            cursor: pointer;
+            .logout-button-icon {
+                margin-top: 0.1rem;
             }
         }
     }

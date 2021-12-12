@@ -20,7 +20,7 @@ function VCC(props) {
                     <p className="card_numer">{cardNumber}</p>
                     <div className="card__space-75">
                         <span className="card__label">Card holder</span>
-                        <p className="card__info">{props.username}</p>
+                        <p className="card__info">{props.name}</p>
                     </div>
                     <div className="card__space-25">
                         <span className="card__label">Expires</span>
