@@ -25,7 +25,9 @@ function Transactions({ stateChanger, ...props }) {
                                 </div>
                                 <div className="transaction__meta">
                                     <span style={{ fontSize: "0.7rem" }}>{transaction.type}</span> {/* either 'Outgoing' or 'Incoming" */}
-                                    <span style={{ fontSize: "0.7rem" }}>{+parseFloat(transaction.amount).toFixed(props.moneyType === "Cash" ? 2 : 5)}</span>
+                                    <span style={{ fontSize: "0.7rem" }}>
+                                        {+parseFloat(transaction.amount).toFixed(props.moneyType === "Cash" ? 2 : 5) || " "}
+                                    </span>
                                 </div>
                             </div>
                         </li>

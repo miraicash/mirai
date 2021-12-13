@@ -13,15 +13,15 @@ let noTransactions = [
     },
 ];
 
-function Metrics({ stateChanger, ...props }) {
+function Metrics({ pageChanger, stateChanger, ...props }) {
     let user = props.data.user;
     return (
         <div className="metrics">
-            <Navbar title={"Overview"} username={user.firstName} />
+            <Navbar title={"Overview"} username={user.firstName} pageChanger={pageChanger} />
             <div className="grid-one">
                 <DailyMetric
                     title={"Cash Balance (USD)"}
-                    subtitle={`$${parseFloat(user.wallet.balance.cash).toFixed(2).toString() || NaN}`}
+                    subtitle={`$${parseFloat(user.wallet.balance.cash).toFixed(2).toString() || 0}`}
                     transactions={user.transactions.cash}
                     currency={"cash"}
                     wallet={user.wallet}
@@ -31,7 +31,7 @@ function Metrics({ stateChanger, ...props }) {
                 />
                 <DailyMetric
                     title={"Crypto Balance (BTC)"}
-                    subtitle={`${+parseFloat(user.wallet.balance.crypto).toFixed(5).toString() || NaN} BTC`}
+                    subtitle={`${+parseFloat(user.wallet.balance.crypto).toFixed(5).toString() || 0} BTC`}
                     transactions={user.transactions.crypto}
                     currency={"crypto"}
                     wallet={user.wallet}

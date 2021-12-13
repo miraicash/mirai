@@ -37,8 +37,8 @@ function DashboardPage() {
             {dataRecieved === 1 ? (
                 <div className="dashboard">
                     <SidebarDash data={userData.user} page={currentPage} pageChanger={setCurrentPage} />
-                    {currentPage === "dashboard" && <Metrics data={userData} stateChanger={setGlobalState} />}
-                    {currentPage === "settings" && <UserSettings data={userData} stateChanger={setGlobalState} />}
+                    {currentPage === "dashboard" && <Metrics data={userData} stateChanger={setGlobalState} pageChanger={setCurrentPage} />}
+                    {currentPage === "settings" && <UserSettings data={userData} stateChanger={setGlobalState} pageChanger={setCurrentPage} />}
                 </div>
             ) : (
                 <div>{dataRecieved === 0 ? "Loading..." : "Unauthorized access"}</div>

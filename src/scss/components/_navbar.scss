@@ -4,11 +4,17 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        .mobile-info {
+            display: none;
+            @media screen and (max-width: 768px) {
+                display: flex;
+            }
+        }
         .info {
             display: flex;
             align-items: center;
             gap: 1rem;
-            @media screen and (max-width: 400px) {
+            @media screen and (max-width: 768px) {
                 display: none;
             }
             .avatar {

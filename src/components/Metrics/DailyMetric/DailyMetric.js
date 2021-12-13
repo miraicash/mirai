@@ -153,11 +153,6 @@ function DailyMetric({ stateChanger, ...props }) {
             console.error(json.message || "Conversion Failed");
         }
     };
-    console.log(
-        props.transactions.map(function ({ type, amount }, i) {
-            return (this.last = (this.last || 0) + (type === "Incoming" ? amount : -amount));
-        }, {})
-    );
     return (
         <>
             <div className="top__card">

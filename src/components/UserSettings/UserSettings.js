@@ -3,7 +3,7 @@ import Navbar from "../Metrics/Navbar";
 import classNames from "classnames";
 import { useAlert } from "react-alert";
 
-function UserSettings({ stateChanger, ...props }) {
+function UserSettings({ pageChanger, stateChanger, ...props }) {
     const alert = useAlert();
     let user = props.data.user;
 
@@ -23,7 +23,6 @@ function UserSettings({ stateChanger, ...props }) {
         for (let i = 0; i < modificationsAllowed.length; i++) {
             if (modificationsAllowed[i] === "firstName" && user[modificationsAllowed[i]] !== firstName.current.value) {
                 modifiedUser[modificationsAllowed[i]] = firstName.current.value;
-                console.log(1, modifiedUser);
             }
             if (modificationsAllowed[i] === "lastName" && user[modificationsAllowed[i]] !== lastName.current.value) {
                 modifiedUser[modificationsAllowed[i]] = lastName.current.value;
@@ -44,7 +43,6 @@ function UserSettings({ stateChanger, ...props }) {
                 modifiedUser[modificationsAllowed[i]] = debitCardZip.current.value;
             }
         }
-        console.log(2, modifiedUser);
         let modify = await fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/users/modify`, {
             method: "POST",
             headers: {
@@ -66,7 +64,7 @@ function UserSettings({ stateChanger, ...props }) {
 
     return (
         <div className="settings">
-            <Navbar title={"Settings"} username={user.firstName} />
+            <Navbar title={"Settings"} username={user.firstName} pageChanger={pageChanger} />
             <div className="grid-one">
                 <div className="top__card">
                     <form className="form" onSubmit={handleSubmit}>
