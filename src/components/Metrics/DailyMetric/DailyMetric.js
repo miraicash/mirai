@@ -28,7 +28,11 @@ function DailyMetric({ stateChanger, ...props }) {
     const [currency1, setCurrency1] = useState("BTC");
     const [currency2, setCurrency2] = useState("USD");
     const [rates, setRates] = useState([]);
-    const exchangeRatesapi = `${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/payments/rates`;
+    const exchangeRatesapi = `${
+        window.location.href.includes("jahaanjain.com")
+            ? process.env.REACT_APP_API_BASE_URL.split(" ")[1]
+            : process.env.REACT_APP_API_BASE_URL.split(" ")[0] || "http://localhost:3001"
+    }/payments/rates`;
 
     useEffect(() => {
         fetch(exchangeRatesapi)
@@ -78,17 +82,24 @@ function DailyMetric({ stateChanger, ...props }) {
             alert.error("Please enter a valid amount");
             return;
         }
-        let handler = await fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/payments/deposit`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                currency: props.currency,
-                amount: parseFloat(amount),
-            }),
-        });
+        let handler = await fetch(
+            `${
+                window.location.href.includes("jahaanjain.com")
+                    ? process.env.REACT_APP_API_BASE_URL.split(" ")[1]
+                    : process.env.REACT_APP_API_BASE_URL.split(" ")[0] || "http://localhost:3001"
+            }/payments/deposit`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    currency: props.currency,
+                    amount: parseFloat(amount),
+                }),
+            }
+        );
         let json = await handler.json();
         if (handler.status === 200) {
             stateChanger(performance.now());
@@ -106,17 +117,24 @@ function DailyMetric({ stateChanger, ...props }) {
             alert.error("Please enter a valid amount");
             return;
         }
-        let handler = await fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/payments/withdraw`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                currency: props.currency,
-                amount: parseFloat(amount),
-            }),
-        });
+        let handler = await fetch(
+            `${
+                window.location.href.includes("jahaanjain.com")
+                    ? process.env.REACT_APP_API_BASE_URL.split(" ")[1]
+                    : process.env.REACT_APP_API_BASE_URL.split(" ")[0] || "http://localhost:3001"
+            }/payments/withdraw`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    currency: props.currency,
+                    amount: parseFloat(amount),
+                }),
+            }
+        );
         let json = await handler.json();
         if (handler.status === 200) {
             stateChanger(performance.now());
@@ -132,19 +150,26 @@ function DailyMetric({ stateChanger, ...props }) {
     const handleCloseAndConvert = async () => {
         console.log(`convert from ${amount1} ${currency1} to ${amount2} ${currency2}`);
         setShowConverter(false);
-        let handler = await fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/payments/convert`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                amountFrom: parseFloat(amount1),
-                amountTo: parseFloat(amount2),
-                convertFrom: currency1 === "BTC" ? "crypto" : "cash",
-                convertTo: currency2 === "BTC" ? "crypto" : "cash",
-            }),
-        });
+        let handler = await fetch(
+            `${
+                window.location.href.includes("jahaanjain.com")
+                    ? process.env.REACT_APP_API_BASE_URL.split(" ")[1]
+                    : process.env.REACT_APP_API_BASE_URL.split(" ")[0] || "http://localhost:3001"
+            }/payments/convert`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    amountFrom: parseFloat(amount1),
+                    amountTo: parseFloat(amount2),
+                    convertFrom: currency1 === "BTC" ? "crypto" : "cash",
+                    convertTo: currency2 === "BTC" ? "crypto" : "cash",
+                }),
+            }
+        );
         let json = await handler.json();
         if (handler.status === 200) {
             stateChanger(performance.now());

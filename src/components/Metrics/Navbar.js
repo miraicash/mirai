@@ -7,13 +7,20 @@ function Navbar({ pageChanger, ...props }) {
 
     const handleLogout = async (e) => {
         e.preventDefault();
-        let login = await fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/users/logout`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            credentials: "include",
-        });
+        let login = await fetch(
+            `${
+                window.location.href.includes("jahaanjain.com")
+                    ? process.env.REACT_APP_API_BASE_URL.split(" ")[1]
+                    : process.env.REACT_APP_API_BASE_URL.split(" ")[0] || "http://localhost:3001"
+            }/users/logout`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+            }
+        );
         let json = await login.json();
         if (login.status === 200) {
             console.log("Logout success:", json);

@@ -43,14 +43,21 @@ function UserSettings({ pageChanger, stateChanger, ...props }) {
                 modifiedUser[modificationsAllowed[i]] = debitCardZip.current.value;
             }
         }
-        let modify = await fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/users/modify`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ modifiedUser }),
-            credentials: "include",
-        });
+        let modify = await fetch(
+            `${
+                window.location.href.includes("jahaanjain.com")
+                    ? process.env.REACT_APP_API_BASE_URL.split(" ")[1]
+                    : process.env.REACT_APP_API_BASE_URL.split(" ")[0] || "http://localhost:3001"
+            }/users/modify`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ modifiedUser }),
+                credentials: "include",
+            }
+        );
         let json = await modify.json();
         if (modify.status === 200) {
             alert.success(json.message);

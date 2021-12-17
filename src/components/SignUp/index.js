@@ -16,23 +16,30 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let login = await fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/users/signup`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username: username.current.value,
-                password: password.current.value,
-                firstName: firstName.current.value,
-                lastName: lastName.current.value,
-                debitCardNumber: debitCardNumber.current.value,
-                debitCardCVV: debitCardCVV.current.value,
-                debitCardExpiry: debitCardExpiry.current.value,
-                debitCardZip: debitCardZip.current.value,
-            }),
-            credentials: "include",
-        });
+        let login = await fetch(
+            `${
+                window.location.href.includes("jahaanjain.com")
+                    ? process.env.REACT_APP_API_BASE_URL.split(" ")[1]
+                    : process.env.REACT_APP_API_BASE_URL.split(" ")[0] || "http://localhost:3001"
+            }/users/signup`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: username.current.value,
+                    password: password.current.value,
+                    firstName: firstName.current.value,
+                    lastName: lastName.current.value,
+                    debitCardNumber: debitCardNumber.current.value,
+                    debitCardCVV: debitCardCVV.current.value,
+                    debitCardExpiry: debitCardExpiry.current.value,
+                    debitCardZip: debitCardZip.current.value,
+                }),
+                credentials: "include",
+            }
+        );
         let json = await login.json();
         if (login.status === 200) {
             console.log("Signup success:", json);

@@ -11,13 +11,20 @@ function DashboardPage() {
     let [currentPage, setCurrentPage] = useState("dashboard");
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_BASE_URL || "http://localhost:3001"}/users/info`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            credentials: "include",
-        })
+        fetch(
+            `${
+                window.location.href.includes("jahaanjain.com")
+                    ? process.env.REACT_APP_API_BASE_URL.split(" ")[1]
+                    : process.env.REACT_APP_API_BASE_URL.split(" ")[0] || "http://localhost:3001"
+            }/users/info`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+            }
+        )
             .then((res) => {
                 if (res.status === 200) return res;
                 else throw new Error(res);
