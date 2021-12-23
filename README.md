@@ -1,46 +1,39 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Mirai.cash - Web Based Mobile Wallet (Frontend)
 
-## Available Scripts
+Our project, Mirai, was developed to provide our users an easy to use, beautifully designed, and security focused experience. Mirai allows users to manage their regular currency like United States Dollars as well as their cryptocurrencies such as Bitcoin.
+## Authors
 
-In the project directory, you can run:
+- Jahaan Jain [@jahaanjain](https://www.github.com/jahaanjain)
+- Samir Osmani [@samirosmani](https://www.github.com/samirosmani)
+- Thomas Blandino [@tblandino725](https://www.github.com/tblandino725)
+- Lucas Gallagher [@lgallagh](https://www.github.com/lgallagh)
+- Fidan Kelmendi [@Fidan2000](https://www.github.com/Fidan2000)
+## Screenshots
 
-### `npm start`
+![Homepage](https://live.staticflickr.com/65535/51770288959_e001aa0269_o.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Signin](https://live.staticflickr.com/65535/51769888533_7f0bab4e6b_o.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Dashboard](https://live.staticflickr.com/65535/51770293189_6b17e59d49_o.png)
 
-### `npm test`
+![Settings](https://live.staticflickr.com/65535/51769892953_60e2aa7d83_o.png)
+## Deployment
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To deploy this project run:
 
-### `npm run build`
+```bash
+  npm install
+  npm run start
+```
+## Environment Variables
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run this project, you will need to add the following environment variable to your .env file
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`REACT_APP_API_BASE_URL` (A link to the backend of mirai)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## License
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[MIT](https://choosealicense.com/licenses/mit/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
